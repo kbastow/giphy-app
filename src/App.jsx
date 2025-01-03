@@ -1,16 +1,20 @@
 import React from 'react';
 import { AppProvider } from './context/AppContext';
-import SearchBar from './components/SearchBar';
 import GifGrid from './components/GifGrid';
+import SearchBar from './components/SearchBar';
 import './App.css';
+import Header from './components/Header';
 
-const App = () => (
-  <AppProvider>
-    <div className="app">
-      <SearchBar />
-      <GifGrid />
-    </div>
-  </AppProvider>
-);
+const App = () => {
+  return (
+    <AppProvider>
+      <div className="App">
+        <Header />
+        <SearchBar />
+        <GifGrid />
+      </div>
+    </AppProvider>
+  );
+};
 
 export default App;

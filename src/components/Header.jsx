@@ -1,9 +1,11 @@
 import React from 'react';
 
-const Header = () => (
-  <Header>
-    <h1>Gif Search</h1>
-  </Header>
-);
+const Header = () => {
+  return (
+    <header className="app-header">
+      <h1>Giphy App</h1>
+    </header>
+  );
+};
 
 export default Header;

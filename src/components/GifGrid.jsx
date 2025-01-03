@@ -1,27 +1,35 @@
-import React, { useContext } from 'react';
+import React, { useContext, useLayoutEffect, useRef } from 'react';
 import { AppContext } from '../context/AppContext';
+import useFetchGifs from '../hooks/useFetchGifs';
 
 const GifGrid = () => {
-  const { state } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
+  const { initialFetch } = useFetchGifs(dispatch);
+  const hasFetched = useRef(false);
 
-  // If loading, show a loading message or spinner
+  useLayoutEffect(() => {
+    if (!hasFetched.current) {
+      initialFetch();
+      hasFetched.current = true;
+    }
+  }, [initialFetch]);
+
   if (state.loading) {
-    return <p>Loading GIFs...</p>; // Placeholder for loading state
+    return <p>Loading GIFs...</p>;
   }
 
-  // If there are no GIFs to display, inform the user
   if (state.gifs.length === 0) {
     return <p>No GIFs found.</p>;
   }
 
   return (
-    <div className="gif-grid">
+    <section className="gif-grid">
       {state.gifs.map((gif) => (
         <div key={gif.id} className="gif-item">
           <img src={gif.images.fixed_height.url} alt={gif.title} />
         </div>
       ))}
-    </div>
+    </section>
   );
 };
 
