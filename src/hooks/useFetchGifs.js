@@ -13,7 +13,7 @@ const useFetchGifs = (dispatch) => {
       try {
         const url =
           query === 'trending'
-            ? `https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=25`
+            ? `https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=24`
             : `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${query}&limit=25`;
 
         const response = await fetch(url);

@@ -23,12 +23,14 @@ const GifGrid = () => {
   }
 
   return (
-    <section className="gif-grid">
-      {state.gifs.map((gif) => (
-        <div key={gif.id} className="gif-item">
-          <img src={gif.images.fixed_height.url} alt={gif.title} />
-        </div>
-      ))}
+    <section className="gif-grid-container">
+      <div className="gif-grid">
+        {state.gifs.map((gif) => (
+          <div key={gif.id} className="gif-item">
+            <img src={gif.images.fixed_height.url} alt={gif.title} />
+          </div>
+        ))}
+      </div>
     </section>
   );
 };
